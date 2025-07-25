@@ -1,0 +1,1 @@
+# Python cache files__pycache__/*.py[cod]*.ipynb_checkpoints# Virtual environmentsvenv/# System files.DS_StoreThumbs.db# VSCode.vscode/# Large model output files*.safetensors*.pt*.pkldonut_output_final/
