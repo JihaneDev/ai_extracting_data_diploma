@@ -1,0 +1,10 @@
+2025-07-23 21:36:07,846 - INFO - === INITIALISATION ===
+2025-07-23 21:36:07,846 - INFO - Dispositif: cpu
+2025-07-23 21:36:21,657 - INFO - Chargement datasets...
+2025-07-23 21:36:22,157 - INFO - Échantillons: 3 train, 1 val
+2025-07-23 21:36:22,182 - INFO - === DÉBUT ENTRAÎNEMENT ===
+2025-07-24 09:29:50,486 - INFO - === INITIALISATION ===
+2025-07-24 09:29:50,487 - INFO - Dispositif: cpu
+2025-07-24 09:30:10,800 - INFO - Chargement datasets...
+2025-07-24 09:30:11,274 - INFO - Échantillons: 3 train, 1 val
+2025-07-24 09:30:11,308 - INFO - === DÉBUT ENTRAÎNEMENT ===

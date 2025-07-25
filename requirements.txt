@@ -1,0 +1,14 @@
+transformers==4.53.2
+datasets==2.21.1
+accelerate==1.8.1
+torch>=2.1.0
+safetensors>=0.4.3
+Pillow>=9.5.0
+huggingface-hub>=0.33.4
+tqdm>=4.67.1
+numpy>=1.21.0
+pdf2image>=1.16.0
+opencv-python-headless>=4.5.0
+scipy>=1.7.0
+black>=22.0  # Formatage
+pytest>=7.0  # Tests
