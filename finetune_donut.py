@@ -27,7 +27,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Configuration Poppler pour Windows
-POPPLER_PATH = r"C:\poppler_bin"
+POPPLER_PATH = r"C:\poppler\poppler-24.08.0\Library\bin"
 os.environ["PATH"] += os.pathsep + POPPLER_PATH
 
 class PDFPreprocessor:
@@ -218,11 +218,19 @@ def train_model():
         logger.info(f"Dispositif: {device}")
         
         # 2. Chargement modèle
+        from transformers import VisionEncoderDecoderModel, DonutProcessor
         processor = DonutProcessor.from_pretrained("naver-clova-ix/donut-base")
         model = VisionEncoderDecoderModel.from_pretrained("naver-clova-ix/donut-base")
+
+        # Set the decoder_start_token_id required for training
+        model.config.decoder_start_token_id = processor.tokenizer.bos_token_id
+        model.config.pad_token_id = processor.tokenizer.pad_token_id
+        model.config.eos_token_id = processor.tokenizer.eos_token_id
         model.config.max_length = 512
         model.to(device)
         
+        print("decoder_start_token_id:", model.config.decoder_start_token_id)
+
         # 3. Chargement données
         logger.info("Chargement datasets...")
         train_dataset = DonutPDFDataset(
@@ -248,7 +256,7 @@ def train_model():
             per_device_train_batch_size=2 if device=="cuda" else 1,
             per_device_eval_batch_size=1,
             num_train_epochs=5,
-            evaluation_strategy="epoch",
+            eval_strategy="epoch",
             save_strategy="epoch",
             logging_dir="./logs",
             logging_steps=10,

@@ -8,3 +8,165 @@
 2025-07-24 09:30:10,800 - INFO - Chargement datasets...
 2025-07-24 09:30:11,274 - INFO - Échantillons: 3 train, 1 val
 2025-07-24 09:30:11,308 - INFO - === DÉBUT ENTRAÎNEMENT ===
+2025-07-25 23:32:43,235 - ERROR - Poppler introuvable dans C:\poppler_bin
+2025-07-25 23:54:58,482 - ERROR - Poppler introuvable dans C:\poppler_bin
+2025-07-25 23:56:19,121 - INFO - === INITIALISATION ===
+2025-07-25 23:56:19,121 - INFO - Dispositif: cpu
+2025-07-25 23:56:24,083 - ERROR - ERREUR: 
+ requires the protobuf library but it was not found in your environment. Check out the instructions on the
+installation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+Traceback (most recent call last):
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\tokenization_utils_base.py", line 2260, in _from_pretrained
+    tokenizer = cls(*init_inputs, **init_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\models\xlm_roberta\tokenization_xlm_roberta_fast.py", line 108, in __init__
+    super().__init__(
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\tokenization_utils_fast.py", line 108, in __init__
+    raise ValueError(
+ValueError: Cannot instantiate this tokenizer from a slow version. If it's based on sentencepiece, make sure you have sentencepiece installed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\finetune_donut.py", line 221, in train_model
+    processor = DonutProcessor.from_pretrained("naver-clova-ix/donut-base")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\processing_utils.py", line 1306, in from_pretrained
+    args = cls._get_arguments_from_pretrained(pretrained_model_name_or_path, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\processing_utils.py", line 1365, in _get_arguments_from_pretrained
+    args.append(attribute_class.from_pretrained(pretrained_model_name_or_path, **kwargs))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\models\auto\tokenization_auto.py", line 1050, in from_pretrained
+    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\tokenization_utils_base.py", line 2014, in from_pretrained
+    return cls._from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\tokenization_utils_base.py", line 2261, in _from_pretrained
+    except import_protobuf_decode_error():
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\tokenization_utils_base.py", line 87, in import_protobuf_decode_error
+    raise ImportError(PROTOBUF_IMPORT_ERROR.format(error_message))
+ImportError: 
+ requires the protobuf library but it was not found in your environment. Check out the instructions on the
+installation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+2025-07-25 23:58:04,810 - INFO - === INITIALISATION ===
+2025-07-25 23:58:04,810 - INFO - Dispositif: cpu
+2025-07-26 00:01:02,660 - INFO - Chargement datasets...
+2025-07-26 00:01:04,081 - INFO - Échantillons: 3 train, 1 val
+2025-07-26 00:01:04,081 - ERROR - ERREUR: TrainingArguments.__init__() got an unexpected keyword argument 'evaluation_strategy'
+Traceback (most recent call last):
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\finetune_donut.py", line 246, in train_model
+    training_args = TrainingArguments(
+                    ^^^^^^^^^^^^^^^^^^
+TypeError: TrainingArguments.__init__() got an unexpected keyword argument 'evaluation_strategy'
+2025-07-26 00:22:09,737 - INFO - === INITIALISATION ===
+2025-07-26 00:22:09,738 - INFO - Dispositif: cpu
+2025-07-26 00:22:15,994 - INFO - Chargement datasets...
+2025-07-26 00:22:16,320 - INFO - Échantillons: 3 train, 1 val
+2025-07-26 00:22:16,347 - INFO - === DÉBUT ENTRAÎNEMENT ===
+2025-07-26 00:23:22,263 - ERROR - ERREUR: Make sure to set the decoder_start_token_id attribute of the model's configuration.
+Traceback (most recent call last):
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\finetune_donut.py", line 276, in train_model
+    trainer.train()
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\trainer.py", line 2206, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\trainer.py", line 2548, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\trainer.py", line 3749, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\trainer.py", line 3836, in compute_loss
+    outputs = model(**inputs)
+              ^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\torch\nn\modules\module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\torch\nn\modules\module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\models\vision_encoder_decoder\modeling_vision_encoder_decoder.py", line 548, in forward
+    decoder_input_ids = shift_tokens_right(
+                        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\models\vision_encoder_decoder\modeling_vision_encoder_decoder.py", line 43, in shift_tokens_right
+    raise ValueError("Make sure to set the decoder_start_token_id attribute of the model's configuration.")
+ValueError: Make sure to set the decoder_start_token_id attribute of the model's configuration.
+2025-07-26 00:29:00,977 - INFO - === INITIALISATION ===
+2025-07-26 00:29:00,977 - INFO - Dispositif: cpu
+2025-07-26 00:29:07,185 - INFO - Chargement datasets...
+2025-07-26 00:29:07,728 - INFO - Échantillons: 3 train, 1 val
+2025-07-26 00:29:07,761 - INFO - === DÉBUT ENTRAÎNEMENT ===
+2025-07-26 00:30:22,776 - ERROR - ERREUR: Make sure to set the decoder_start_token_id attribute of the model's configuration.
+Traceback (most recent call last):
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\finetune_donut.py", line 276, in train_model
+    trainer.train()
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\trainer.py", line 2206, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\trainer.py", line 2548, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\trainer.py", line 3749, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\trainer.py", line 3836, in compute_loss
+    outputs = model(**inputs)
+              ^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\torch\nn\modules\module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\torch\nn\modules\module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\models\vision_encoder_decoder\modeling_vision_encoder_decoder.py", line 548, in forward
+    decoder_input_ids = shift_tokens_right(
+                        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\models\vision_encoder_decoder\modeling_vision_encoder_decoder.py", line 43, in shift_tokens_right
+    raise ValueError("Make sure to set the decoder_start_token_id attribute of the model's configuration.")
+ValueError: Make sure to set the decoder_start_token_id attribute of the model's configuration.
+2025-07-27 22:24:28,734 - INFO - === INITIALISATION ===
+2025-07-27 22:24:28,735 - INFO - Dispositif: cpu
+2025-07-27 22:24:47,699 - INFO - Chargement datasets...
+2025-07-27 22:24:48,361 - INFO - Échantillons: 3 train, 1 val
+2025-07-27 22:24:48,394 - INFO - === DÉBUT ENTRAÎNEMENT ===
+2025-07-27 22:26:06,399 - ERROR - ERREUR: Make sure to set the decoder_start_token_id attribute of the model's configuration.
+Traceback (most recent call last):
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\finetune_donut.py", line 276, in train_model
+    trainer.train()
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\trainer.py", line 2206, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\trainer.py", line 2548, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\trainer.py", line 3749, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\trainer.py", line 3836, in compute_loss
+    outputs = model(**inputs)
+              ^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\torch\nn\modules\module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\torch\nn\modules\module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\models\vision_encoder_decoder\modeling_vision_encoder_decoder.py", line 548, in forward
+    decoder_input_ids = shift_tokens_right(
+                        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\touza\OneDrive\Documents\Projet_stage_extraction\ai_extracting_data_diploma\env\Lib\site-packages\transformers\models\vision_encoder_decoder\modeling_vision_encoder_decoder.py", line 43, in shift_tokens_right
+    raise ValueError("Make sure to set the decoder_start_token_id attribute of the model's configuration.")
+ValueError: Make sure to set the decoder_start_token_id attribute of the model's configuration.
+2025-07-27 22:27:22,640 - INFO - === INITIALISATION ===
+2025-07-27 22:27:22,641 - INFO - Dispositif: cpu
+2025-07-27 22:27:38,307 - INFO - Chargement datasets...
+2025-07-27 22:27:38,936 - INFO - Échantillons: 3 train, 1 val
+2025-07-27 22:27:38,982 - INFO - === DÉBUT ENTRAÎNEMENT ===
+2025-07-27 23:18:38,042 - INFO - === ENTRAÎNEMENT TERMINÉ ===
+2025-07-27 23:18:41,428 - INFO - Modèle sauvegardé
