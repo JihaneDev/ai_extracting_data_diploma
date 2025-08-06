@@ -30,65 +30,6 @@ logger = logging.getLogger(__name__)
 POPPLER_PATH = r"C:\poppler\poppler-24.08.0\Library\bin"
 os.environ["PATH"] += os.pathsep + POPPLER_PATH
 
-class PDFPreprocessor:
-    """Classe optimisée pour le prétraitement des documents"""
-    
-    @staticmethod
-    def enhance_image(image):
-        """Amélioration du contraste et netteté"""
-        try:
-            enhancer = ImageEnhance.Contrast(image)
-            image = enhancer.enhance(1.5)
-            enhancer = ImageEnhance.Sharpness(image)
-            return enhancer.enhance(2.0)
-        except Exception as e:
-            logger.warning(f"Erreur enhancement: {str(e)}")
-            return image
-
-    @staticmethod
-    def deskew(image):
-        """Correction de l'inclinaison"""
-        try:
-            gray = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2GRAY)
-            coords = np.column_stack(np.where(gray > 0))
-            angle = cv2.minAreaRect(coords)[-1]
-            angle = angle - 90 if angle > 45 else angle
-            (h, w) = image.size
-            center = (w // 2, h // 2)
-            M = cv2.getRotationMatrix2D(center, angle, 1.0)
-            rotated = cv2.warpAffine(
-                np.array(image), 
-                M, 
-                (w, h),
-                flags=cv2.INTER_CUBIC,
-                borderMode=cv2.BORDER_REPLICATE
-            )
-            return Image.fromarray(rotated)
-        except Exception as e:
-            logger.warning(f"Erreur deskew: {str(e)}")
-            return image
-
-    @staticmethod
-    def resize_with_padding(image, target_size=(2560, 1920)):
-        """Redimensionnement intelligent"""
-        try:
-            width, height = image.size
-            ratio = min(target_size[0]/width, target_size[1]/height)
-            new_size = (int(width*ratio), int(height*ratio))
-            image = image.resize(new_size, Image.BILINEAR)
-            
-            delta_w = target_size[0] - new_size[0]
-            delta_h = target_size[1] - new_size[1]
-            padding = (
-                max(0, delta_w//2),
-                max(0, delta_h//2),
-                max(0, delta_w - (delta_w//2)),
-                max(0, delta_h - (delta_h//2))
-            )
-            return ImageOps.expand(image, padding, fill='white')
-        except Exception as e:
-            logger.error(f"Erreur resize: {str(e)}")
-            return image.resize(target_size)
 
 class DonutPDFDataset(Dataset):
     """Dataset spécialisé pour les PDF avec vérification complète"""
@@ -174,11 +115,6 @@ class DonutPDFDataset(Dataset):
             if not images:
                 raise ValueError("Conversion échouée")
             image = images[0].convert("RGB")
-            
-            # Prétraitement
-            image = PDFPreprocessor.deskew(image)
-            image = PDFPreprocessor.enhance_image(image)
-            image = PDFPreprocessor.resize_with_padding(image)
             
             # Traitement Donut
             pixel_values = self.processor(image, return_tensors="pt").pixel_values.squeeze()
